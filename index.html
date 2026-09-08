@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Material y práctica interactiva de trigonometría para Arelly.">
+  <title>Trigonometría con Mario y SMG4</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, Helvetica, sans-serif; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; margin: 0; color: #f8fafc;
+      background:
+        radial-gradient(circle at 15% 4%, #3157d5 0 9%, transparent 30%),
+        radial-gradient(circle at 89% 8%, #f5b700 0 5%, transparent 18%),
+        linear-gradient(145deg, #080d2a, #17113f 52%, #3a1126);
+    }
+    main { width: min(1060px, calc(100% - 32px)); margin: 0 auto; padding: 52px 0 32px; }
+    .eyebrow { margin: 0 0 12px; color: #fde68a; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 800px; font-size: clamp(2.2rem, 6vw, 4.8rem); line-height: 1; }
+    .intro { max-width: 670px; margin: 18px 0 34px; color: #dbeafe; font-size: clamp(1rem, 2.4vw, 1.25rem); line-height: 1.55; }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .choice {
+      position: relative; display: grid; grid-template-columns: 142px 1fr; gap: 22px; align-items: center;
+      min-height: 300px; overflow: hidden; padding: 26px; border: 2px solid rgba(255,255,255,.3); border-radius: 28px;
+      color: #fff; text-decoration: none; background: rgba(9, 12, 39, .78); box-shadow: 0 18px 46px rgba(0,0,0,.28);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .choice::after { content: "→"; position: absolute; right: 25px; bottom: 18px; font-size: 2rem; font-weight: 900; }
+    .choice:hover, .choice:focus-visible { transform: translateY(-6px); border-color: #fde047; box-shadow: 0 25px 50px rgba(0,0,0,.38); outline: none; }
+    .choice img { width: 142px; height: 142px; object-fit: cover; border: 5px solid #fff; border-radius: 50%; background: #fff; }
+    .tag { display: inline-block; margin-bottom: 8px; padding: 6px 10px; border-radius: 999px; background: #facc15; color: #1e1b4b; font-size: .78rem; font-weight: 900; letter-spacing: .06em; }
+    .choice.practice .tag { background: #67e8f9; }
+    h2 { margin: 0 0 10px; font-size: clamp(1.65rem, 3.6vw, 2.35rem); }
+    .choice p { margin: 0; color: #e2e8f0; line-height: 1.5; }
+    footer { padding: 12px; color: #cbd5e1; text-align: center; font-size: .9rem; }
+    @media (max-width: 720px) {
+      main { padding-top: 34px; }
+      .choices { grid-template-columns: 1fr; }
+      .choice { min-height: 0; }
+    }
+    @media (max-width: 420px) {
+      .choice { grid-template-columns: 1fr; text-align: center; }
+      .choice img { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Aventura de aprendizaje</p>
+    <h1>Trigonometría con Mario y SMG4</h1>
+    <p class="intro">Elige una misión: primero entiende las razones trigonométricas y después demuestra lo que sabes con ejercicios que cambian en cada intento.</p>
+    <section class="choices" aria-label="Elige una sección">
+      <a class="choice" href="aprender.html">
+        <img src="assets/mario.webp" alt="Mario">
+        <div>
+          <span class="tag">Misión 1</span>
+          <h2>Aprender con Mario</h2>
+          <p>Repasa lados, seno, coseno, tangente, elevación, depresión y Ley de Senos con ejemplos paso a paso.</p>
+        </div>
+      </a>
+      <a class="choice practice" href="practicar.html">
+        <img src="assets/smg4.jpg" alt="SMG4">
+        <div>
+          <span class="tag">Misión 2</span>
+          <h2>Practicar con SMG4</h2>
+          <p>Resuelve preguntas por tema o haz un simulacro de 18 retos, con respuestas y explicaciones inmediatas.</p>
+        </div>
+      </a>
+    </section>
+  </main>
+  <footer>Hecho para estudiar, intentar y volver a intentarlo. ⭐</footer>
+</body>
+</html>

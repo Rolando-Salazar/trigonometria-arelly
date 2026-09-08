@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trigonometría para Arelly — PRACTICAR</title>
+<style>
+:root{
+  --ink:#172033;--muted:#667085;--line:#dbe3f0;--blue:#3157d5;--green:#15803d;
+  --orange:#b45309;--purple:#7c3aed;--red:#b91c1c;--soft:#eef4ff;--yellow:#fff8db;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#edf3ff,#fbfcff 28%,#f6f8ff);color:var(--ink)}
+header{background:linear-gradient(135deg,#203b9d,#7547c6);color:white;padding:30px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(2rem,5vw,3.25rem)}
+header p{max-width:880px;margin:0 auto;line-height:1.55}
+.header-stack{max-width:1050px;margin:auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+.smg4-frame{width:150px;height:150px;display:flex;align-items:center;justify-content:center;border-radius:24px;background:rgba(255,255,255,.14);padding:7px;box-shadow:0 14px 32px rgba(0,0,0,.18);animation:dance 1.1s ease-in-out infinite;transform-origin:center bottom}
+.smg4-frame img{width:100%;height:100%;object-fit:contain;display:block;border-radius:18px;background:white;padding:5px;border:3px solid rgba(255,255,255,.55)}
+@keyframes dance{0%{transform:translateY(0) rotate(-5deg)}25%{transform:translateY(-7px) rotate(7deg)}50%{transform:translateY(0) rotate(-3deg) scale(1.04)}75%{transform:translateY(-8px) rotate(8deg)}100%{transform:translateY(0) rotate(-5deg)}}
+.wrap{max-width:1080px;margin:auto;padding:20px}
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;margin:18px 0;box-shadow:0 12px 30px #20305012}
+.card h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:0 0 10px}
+.card h3{margin:20px 0 8px}
+.bigidea{font-size:1.12rem;line-height:1.65;background:var(--soft);border-left:6px solid var(--blue);padding:15px;border-radius:14px}
+.note{color:var(--muted);line-height:1.55}
+.topic-table{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.topic-link{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;box-shadow:0 7px 18px #2030500c;transition:.16s}
+.topic-link:hover{transform:translateY(-2px);border-color:#9db1ef}
+.topic-link strong{display:block;color:var(--blue);margin-bottom:4px}
+.sticky-mini{position:sticky;top:0;z-index:20;background:rgba(246,248,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:8px}
+.sticky-mini .inner{max-width:1080px;margin:auto;display:flex;gap:8px;overflow:auto}
+.sticky-mini a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:800;background:white;border:1px solid var(--line);border-radius:999px;padding:9px 12px}
+.rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.rule{border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;background:#fff}
+.rule.blue{background:#eff6ff}.rule.green{background:#f0fdf4}.rule.orange{background:#fff7ed}
+.math{font-family:Georgia,serif;font-size:1.18rem;background:#fbfcff;border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center;line-height:1.65;margin:10px 0;overflow:auto}
+.frac{display:inline-grid;grid-template-rows:auto auto;vertical-align:middle;text-align:center;min-width:92px}
+.frac .top{border-bottom:2px solid currentColor;padding:0 6px 3px}.frac .bottom{padding:3px 6px 0}
+.svgbox{max-width:820px;margin:14px auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px}
+.svgbox svg{width:100%;height:auto;display:block}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+button{border:0;border-radius:12px;padding:11px 14px;font-weight:900;cursor:pointer}
+.primary{background:var(--blue);color:white}.secondary{background:white;border:1px solid var(--line);color:var(--ink)}
+.feedback{display:none;margin-top:11px;padding:13px;border:1px solid var(--line);border-radius:13px;background:#f8fafc;line-height:1.55}.feedback.show{display:block}
+.steps{counter-reset:step}.step{position:relative;padding:14px 14px 14px 52px;margin:11px 0;border:1px solid var(--line);border-radius:15px;background:white}
+.step:before{counter-increment:step;content:counter(step);position:absolute;left:13px;top:13px;width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:grid;place-items:center;font-weight:900}
+.property-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.property{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+.property strong{display:block;margin-bottom:6px}
+.scene{position:relative;max-width:820px;height:430px;margin:14px auto;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#dff3ff 0 68%,#dff4d7 68%);overflow:hidden}
+.scene .ground{position:absolute;left:0;right:0;bottom:76px;height:6px;background:#6b7d5d}
+.scene .person{position:absolute;width:90px;height:120px;object-fit:contain;z-index:5;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15))}
+.scene .actor .person{position:static;z-index:auto;filter:none}
+.scene .tree-trunk{position:absolute;width:34px;background:#8b5a2b;border-radius:12px}
+.scene .tree-top{position:absolute;width:120px;height:100px;background:#37a75b;border-radius:50%}
+.scene .building{position:absolute;background:#cbd5e1;border:5px solid #94a3b8;border-bottom:0}
+.scene .car{position:absolute;font-size:56px}
+.scene .sight{position:absolute;height:5px;background:var(--blue);transform-origin:left center;border-radius:99px}
+.scene .label{position:absolute;background:white;border:1px solid var(--line);padding:6px 9px;border-radius:10px;font-weight:900;z-index:8}
+.cross{background:var(--yellow);border:1px solid #fde68a;border-radius:15px;padding:14px;text-align:center;font-size:1.15rem;font-weight:800}
+.quiz-choice{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);margin:8px 0}
+.quiz-choice.correct{background:#dcfce7;border-color:#86efac}.quiz-choice.wrong{background:#fee2e2;border-color:#fca5a5}
+.numeric-row{display:grid;grid-template-columns:1fr auto;gap:9px;margin-top:10px}
+input{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;font-size:1.02rem}
+.progress{height:15px;background:#e8edf6;border-radius:99px;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#3157d5,#7c3aed)}
+footer{text-align:center;color:var(--muted);padding:28px}
+
+.scene .actor{position:absolute;z-index:7;cursor:pointer;display:flex;flex-direction:column;align-items:center;user-select:none}
+.scene .actor img,.scene .actor svg{display:block;width:90px;height:120px;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15));transition:transform .18s ease,filter .18s ease}
+.scene .actor.mario img,.scene .actor.mario svg{width:84px;height:98px}
+.scene .actor .crazy-bubble{opacity:0;transform:scale(.7);transform-origin:center;transition:.18s ease;background:white;border:1px solid var(--line);border-radius:12px;padding:5px 8px;font-size:24px;line-height:1;box-shadow:0 6px 14px rgba(0,0,0,.10);margin-bottom:4px}
+.scene .actor.crazy .crazy-bubble{opacity:1;transform:scale(1)}
+.scene .actor.crazy img{animation:crazyShake .36s linear infinite;filter:drop-shadow(0 7px 6px rgba(0,0,0,.18)) saturate(1.25) hue-rotate(25deg)}
+.scene .actor.crazy.mario img{animation:crazySpin .52s linear infinite}
+.scene .scene-tip{display:none}
+.scene .auto-line{position:absolute;height:5px;background:var(--blue);transform-origin:left center;border-radius:99px;z-index:4}
+.scene .line-target{position:absolute;width:18px;height:18px;border-radius:50%;opacity:0;pointer-events:none}
+@keyframes crazyShake{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-3px,-4px) rotate(-8deg) scale(1.04)}50%{transform:translate(3px,1px) rotate(9deg) scale(1.08)}75%{transform:translate(-2px,2px) rotate(-7deg) scale(1.04)}100%{transform:translate(0,0) rotate(0)}}
+@keyframes crazySpin{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-2px,-4px) rotate(-12deg) scale(1.02)}50%{transform:translate(4px,1px) rotate(12deg) scale(1.08)}75%{transform:translate(-3px,3px) rotate(-10deg) scale(1.04)}100%{transform:translate(0,0) rotate(0)}}
+
+@media(max-width:760px){
+  .topic-table,.rule-grid,.property-grid{grid-template-columns:1fr}
+  .wrap{padding:12px}.card{padding:16px}.numeric-row{grid-template-columns:1fr}
+  .scene{height:360px}.scene .person{width:72px;height:100px}.smg4-frame{width:130px;height:130px}
+}
+
+.fixed-depression{
+  position:relative;
+  max-width:820px;
+  height:450px;
+  margin:14px auto;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(#dff3ff 0 72%,#dff4d7 72%);
+  overflow:hidden;
+}
+.fixed-depression .ground-line{
+  position:absolute;left:0;right:0;bottom:76px;height:6px;background:#6b7d5d;
+}
+.fixed-depression .building-tall{
+  position:absolute;left:70px;bottom:82px;width:235px;height:300px;
+  background:#cbd5e1;border:5px solid #94a3b8;border-bottom:0;
+}
+.fixed-depression .smg-top{
+  position:absolute;left:130px;top:8px;width:105px;height:130px;object-fit:contain;
+  z-index:6;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15));
+}
+.fixed-depression .mario-bottom{
+  position:absolute;right:74px;bottom:68px;width:92px;height:108px;z-index:6;
+  cursor:pointer;
+}
+.fixed-depression .mario-bottom svg{width:100%;height:100%;display:block}
+.fixed-depression .sight-svg{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;
+}
+.fixed-depression .angle-label{
+  position:absolute;left:325px;top:118px;background:white;border:1px solid var(--line);
+  padding:6px 9px;border-radius:10px;font-weight:900;z-index:8;
+}
+.fixed-depression .height-label{
+  position:absolute;left:14px;top:245px;background:white;border:1px solid var(--line);
+  padding:6px 9px;border-radius:10px;font-weight:900;z-index:8;
+}
+.fixed-depression .distance-label{
+  position:absolute;right:175px;bottom:34px;background:white;border:1px solid var(--line);
+  padding:6px 9px;border-radius:10px;font-weight:900;z-index:8;
+}
+.fixed-depression .mario-bottom.crazy{animation:marioCrazy .42s linear infinite}
+.fixed-depression .smg-top.crazy{animation:smgCrazy .38s linear infinite}
+@keyframes marioCrazy{
+  0%{transform:rotate(0) translateY(0)}
+  25%{transform:rotate(-12deg) translateY(-5px) scale(1.05)}
+  50%{transform:rotate(12deg) translateY(0) scale(1.1)}
+  75%{transform:rotate(-10deg) translateY(-4px) scale(1.05)}
+  100%{transform:rotate(0) translateY(0)}
+}
+@keyframes smgCrazy{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(-9deg) translateY(-4px)}
+  50%{transform:rotate(9deg) translateY(1px)}
+  75%{transform:rotate(-7deg) translateY(-3px)}
+  100%{transform:rotate(0)}
+}
+@media(max-width:760px){
+  .fixed-depression{height:380px}
+  .fixed-depression .building-tall{left:38px;width:185px;height:245px}
+  .fixed-depression .smg-top{left:75px;width:88px;height:112px}
+  .fixed-depression .mario-bottom{right:35px;width:78px;height:92px}
+  .fixed-depression .angle-label{left:235px;top:110px}
+  .fixed-depression .distance-label{right:120px}
+}
+
+
+.fixed-elevation{
+  position:relative;
+  max-width:820px;
+  height:420px;
+  margin:14px auto;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(#dff3ff 0 72%,#dff4d7 72%);
+  overflow:hidden;
+}
+.fixed-elevation .ground-line{
+  position:absolute;left:0;right:0;bottom:76px;height:6px;background:#6b7d5d;
+}
+.fixed-elevation .smg-left{
+  position:absolute;left:68px;bottom:74px;width:98px;height:124px;object-fit:contain;
+  z-index:6;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15));cursor:pointer;
+}
+.fixed-elevation .tree-trunk{
+  position:absolute;right:90px;bottom:82px;width:34px;height:190px;background:#8b5a2b;border-radius:12px;
+}
+.fixed-elevation .tree-top{
+  position:absolute;right:47px;top:36px;width:120px;height:108px;background:#37a75b;border-radius:50%;
+}
+.fixed-elevation .sight-svg{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;
+}
+.fixed-elevation .angle-label,
+.fixed-elevation .distance-label,
+.fixed-elevation .height-label{
+  position:absolute;background:white;border:1px solid var(--line);padding:6px 9px;border-radius:10px;font-weight:900;z-index:8;
+}
+.fixed-elevation .angle-label{left:175px;bottom:86px}
+.fixed-elevation .distance-label{left:345px;bottom:34px}
+.fixed-elevation .height-label{right:18px;top:175px}
+.fixed-elevation .smg-left.crazy{animation:smgCrazyElev .38s linear infinite}
+@keyframes smgCrazyElev{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(-9deg) translateY(-4px)}
+  50%{transform:rotate(9deg) translateY(1px)}
+  75%{transform:rotate(-7deg) translateY(-3px)}
+  100%{transform:rotate(0)}
+}
+@media(max-width:760px){
+  .fixed-elevation{height:355px}
+  .fixed-elevation .smg-left{left:40px;width:78px;height:102px}
+  .fixed-elevation .tree-trunk{right:60px;height:160px}
+  .fixed-elevation .tree-top{right:25px;top:36px;width:108px;height:96px}
+  .fixed-elevation .angle-label{left:132px;bottom:82px}
+  .fixed-elevation .distance-label{left:215px;bottom:34px}
+  .fixed-elevation .height-label{right:10px;top:145px}
+}
+
+
+.fixed-elevation-mario{
+  position:relative;
+  max-width:820px;
+  height:420px;
+  margin:14px auto;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(#dff3ff 0 72%,#dff4d7 72%);
+  overflow:hidden;
+}
+.fixed-elevation-mario .ground-line{
+  position:absolute;left:0;right:0;bottom:76px;height:6px;background:#6b7d5d;
+}
+.fixed-elevation-mario .smg-left{
+  position:absolute;left:68px;bottom:74px;width:98px;height:124px;object-fit:contain;
+  z-index:6;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15));cursor:pointer;
+}
+.fixed-elevation-mario .tree-trunk{
+  position:absolute;right:88px;bottom:82px;width:36px;height:190px;background:#8b5a2b;border-radius:12px;
+}
+.fixed-elevation-mario .tree-top{
+  position:absolute;right:45px;top:34px;width:128px;height:112px;background:#37a75b;border-radius:50%;
+}
+.fixed-elevation-mario .mario-tree{
+  position:absolute;right:86px;top:82px;width:88px;height:98px;z-index:7;cursor:pointer;
+}
+.fixed-elevation-mario .mario-tree svg{width:100%;height:100%;display:block;filter:drop-shadow(0 5px 4px rgba(0,0,0,.15))}
+.fixed-elevation-mario .branch-seat{
+  position:absolute;right:120px;top:152px;width:66px;height:14px;background:#8b5a2b;border-radius:10px;z-index:5;
+}
+.fixed-elevation-mario .sight-svg{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;
+}
+.fixed-elevation-mario .angle-label,
+.fixed-elevation-mario .distance-label,
+.fixed-elevation-mario .height-label{
+  position:absolute;background:white;border:1px solid var(--line);padding:6px 9px;border-radius:10px;font-weight:900;z-index:8;
+}
+.fixed-elevation-mario .angle-label{left:175px;bottom:86px}
+.fixed-elevation-mario .distance-label{left:345px;bottom:34px}
+.fixed-elevation-mario .height-label{right:18px;top:175px}
+.fixed-elevation-mario .smg-left.crazy{animation:smgCrazyElev .38s linear infinite}
+.fixed-elevation-mario .mario-tree.crazy{animation:marioCrazyTree .42s linear infinite}
+@keyframes smgCrazyElev{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(-9deg) translateY(-4px)}
+  50%{transform:rotate(9deg) translateY(1px)}
+  75%{transform:rotate(-7deg) translateY(-3px)}
+  100%{transform:rotate(0)}
+}
+@keyframes marioCrazyTree{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(-11deg) translateY(-5px) scale(1.03)}
+  50%{transform:rotate(10deg) translateY(0) scale(1.08)}
+  75%{transform:rotate(-8deg) translateY(-4px) scale(1.03)}
+  100%{transform:rotate(0)}
+}
+@media(max-width:760px){
+  .fixed-elevation-mario{height:355px}
+  .fixed-elevation-mario .smg-left{left:38px;width:78px;height:102px}
+  .fixed-elevation-mario .tree-trunk{right:58px;height:160px}
+  .fixed-elevation-mario .tree-top{right:20px;top:36px;width:110px;height:98px}
+  .fixed-elevation-mario .mario-tree{right:50px;top:86px;width:72px;height:80px}
+  .fixed-elevation-mario .branch-seat{right:86px;top:144px;width:50px;height:12px}
+  .fixed-elevation-mario .angle-label{left:128px;bottom:82px}
+  .fixed-elevation-mario .distance-label{left:205px;bottom:34px}
+  .fixed-elevation-mario .height-label{right:10px;top:145px}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-stack">
+    <div>
+      <h1>🎯 Trigonometría para Arelly — PRACTICAR</h1>
+      <p>Práctica por tema y simulacro final. Basado en los temas de la hoja.</p>
+    </div>
+    <div class="smg4-frame" aria-hidden="true">
+      <img src="https://pbs.twimg.com/media/Gt28Sv8WUAAaL_7.jpg" alt="" onerror="this.onerror=null;this.src='https://static.tvtropes.org/pmwiki/pub/images/3732fe57_eef2_450b_a9b0_306b9e96967a.png'">
+    </div>
+  </div>
+</header>
+
+<nav class="sticky-mini">
+  <div class="inner">
+    <a href="#tabla">Temas</a>
+    <a href="#practicaTema">Práctica por tema</a>
+    <a href="#escenas">Elevación/Depresión</a>
+    <a href="#simulacro">Simulacro</a>
+  </div>
+</nav>
+
+<main class="wrap">
+<section id="tabla" class="card">
+  <h2>📚 Tabla interactiva de temas</h2>
+  <p class="note">Haz clic en un tema para practicarlo directamente.</p>
+  <div class="topic-table">
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('partes')"><strong>1. Ángulo de referencia y lados</strong>Opuesto, adyacente e hipotenusa.</a>
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('razones')"><strong>2. Seno, coseno y tangente</strong>Escoger razón y calcular lados.</a>
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('propiedades')"><strong>3. Propiedades básicas</strong>Relaciones sencillas de las razones.</a>
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('elevacion')"><strong>4. Elevación</strong>Mirar arriba, dibujar y calcular.</a>
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('depresion')"><strong>5. Depresión</strong>Mirar abajo, dibujar y calcular.</a>
+    <a class="topic-link" href="#practicaTema" onclick="selectTopic('senos')"><strong>6. Ley de Senos</strong>Proporción, cruce, despeje y resultado.</a>
+    <a class="topic-link" href="#simulacro"><strong>7. Problemas contextualizados</strong>Todo mezclado en el simulacro.</a>
+  </div>
+</section>
+
+<section id="practicaTema" class="card">
+  <h2>🧩 Práctica por tema</h2>
+  <div class="btnrow">
+    <button class="secondary" onclick="selectTopic('partes')">Ángulo y lados</button>
+    <button class="secondary" onclick="selectTopic('razones')">Razones</button>
+    <button class="secondary" onclick="selectTopic('propiedades')">Propiedades</button>
+    <button class="secondary" onclick="selectTopic('elevacion')">Elevación</button>
+    <button class="secondary" onclick="selectTopic('depresion')">Depresión</button>
+    <button class="secondary" onclick="selectTopic('senos')">Ley de Senos</button>
+  </div>
+  <div id="topicTitle" class="bigidea">Selecciona un tema.</div>
+  <div id="topicQuestion" style="margin-top:14px"></div>
+  <div id="topicFeedback" class="feedback"></div>
+  <div class="btnrow"><button class="primary" onclick="newTopicQuestion()">🎲 Otro ejercicio del mismo tema</button></div>
+</section>
+
+<section id="escenas" class="card">
+  <h2>🌳🏢 Práctica visual: elevación y depresión con SMG4</h2>
+  <p class="note">La elevación ahora apunta a Mario en el árbol y la depresión apunta a Mario en el suelo.</p>
+
+  <div class="fixed-elevation-mario" aria-label="SMG4 mirando a Mario sentado en el árbol">
+    <div class="ground-line"></div>
+
+    <img class="smg-left" id="fixedSmgElev"
+         src="https://static.tvtropes.org/pmwiki/pub/images/3732fe57_eef2_450b_a9b0_306b9e96967a.png"
+         onerror="this.onerror=null;this.src='https://pbs.twimg.com/media/Gt28Sv8WUAAaL_7.jpg'"
+         alt="SMG4">
+
+    <div class="tree-trunk"></div>
+    <div class="tree-top"></div>
+    <div class="branch-seat"></div>
+    <div class="mario-tree" id="fixedMarioTree" aria-label="Mario">
+      
+<svg class="mario-inline" viewBox="0 0 120 135" aria-label="Mario">
+  <ellipse cx="60" cy="127" rx="28" ry="5" fill="rgba(0,0,0,.12)"/>
+  <circle cx="60" cy="35" r="23" fill="#f2c7a5"/>
+  <path d="M31 29 Q60 4 89 29 L89 41 L31 41 Z" fill="#d62828"/>
+  <rect x="48" y="17" width="24" height="14" rx="4" fill="#fff"/>
+  <text x="60" y="28" font-size="12" text-anchor="middle" font-family="Arial" font-weight="700" fill="#d62828">M</text>
+  <circle cx="51" cy="34" r="3" fill="#1f2937"/>
+  <circle cx="70" cy="34" r="3" fill="#1f2937"/>
+  <path d="M42 47 Q60 60 78 47" stroke="#6b3e26" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M48 54 Q60 61 72 54" stroke="#7a1f1f" stroke-width="2" fill="none"/>
+  <rect x="38" y="59" width="44" height="35" rx="7" fill="#2563eb"/>
+  <rect x="27" y="62" width="16" height="28" rx="7" fill="#d62828"/>
+  <rect x="77" y="62" width="16" height="28" rx="7" fill="#d62828"/>
+  <circle cx="30" cy="90" r="7" fill="#f2c7a5"/>
+  <circle cx="90" cy="90" r="7" fill="#f2c7a5"/>
+  <rect x="45" y="59" width="9" height="32" fill="#facc15"/>
+  <rect x="66" y="59" width="9" height="32" fill="#facc15"/>
+  <rect x="44" y="92" width="14" height="24" rx="6" fill="#60a5fa"/>
+  <rect x="62" y="92" width="14" height="24" rx="6" fill="#60a5fa"/>
+  <rect x="38" y="112" width="22" height="12" rx="6" fill="#7c2d12"/>
+  <rect x="60" y="112" width="22" height="12" rx="6" fill="#7c2d12"/>
+</svg>
+
+    </div>
+
+    <svg class="sight-svg" viewBox="0 0 820 420" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="138" y1="247" x2="666" y2="136" stroke="#3157d5" stroke-width="6" stroke-linecap="round"/>
+      <path d="M142 262 A54 54 0 0 1 193 249" fill="none" stroke="#3157d5" stroke-width="3"/>
+      <line x1="138" y1="262" x2="210" y2="262" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 7"/>
+    </svg>
+
+    <div class="angle-label">35°</div>
+    <div class="distance-label">20 metros</div>
+    <div class="height-label">altura ?</div>
+  </div>
+
+<div class="fixed-depression" aria-label="SMG4 arriba de un edificio mirando hacia Mario">
+    <div class="ground-line"></div>
+    <div class="building-tall"></div>
+
+    <img class="smg-top" id="fixedSmgDep"
+         src="https://static.tvtropes.org/pmwiki/pub/images/3732fe57_eef2_450b_a9b0_306b9e96967a.png"
+         onerror="this.onerror=null;this.src='https://pbs.twimg.com/media/Gt28Sv8WUAAaL_7.jpg'"
+         alt="SMG4">
+
+    <div class="mario-bottom" id="fixedMarioDep" aria-label="Mario">
+      
+<svg class="mario-inline" viewBox="0 0 120 135" aria-label="Mario">
+  <ellipse cx="60" cy="127" rx="28" ry="5" fill="rgba(0,0,0,.12)"/>
+  <circle cx="60" cy="35" r="23" fill="#f2c7a5"/>
+  <path d="M31 29 Q60 4 89 29 L89 41 L31 41 Z" fill="#d62828"/>
+  <rect x="48" y="17" width="24" height="14" rx="4" fill="#fff"/>
+  <text x="60" y="28" font-size="12" text-anchor="middle" font-family="Arial" font-weight="700" fill="#d62828">M</text>
+  <circle cx="51" cy="34" r="3" fill="#1f2937"/>
+  <circle cx="70" cy="34" r="3" fill="#1f2937"/>
+  <path d="M42 47 Q60 60 78 47" stroke="#6b3e26" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M48 54 Q60 61 72 54" stroke="#7a1f1f" stroke-width="2" fill="none"/>
+  <rect x="38" y="59" width="44" height="35" rx="7" fill="#2563eb"/>
+  <rect x="27" y="62" width="16" height="28" rx="7" fill="#d62828"/>
+  <rect x="77" y="62" width="16" height="28" rx="7" fill="#d62828"/>
+  <circle cx="30" cy="90" r="7" fill="#f2c7a5"/>
+  <circle cx="90" cy="90" r="7" fill="#f2c7a5"/>
+  <rect x="45" y="59" width="9" height="32" fill="#facc15"/>
+  <rect x="66" y="59" width="9" height="32" fill="#facc15"/>
+  <rect x="44" y="92" width="14" height="24" rx="6" fill="#60a5fa"/>
+  <rect x="62" y="92" width="14" height="24" rx="6" fill="#60a5fa"/>
+  <rect x="38" y="112" width="22" height="12" rx="6" fill="#7c2d12"/>
+  <rect x="60" y="112" width="22" height="12" rx="6" fill="#7c2d12"/>
+</svg>
+
+    </div>
+
+    <svg class="sight-svg" viewBox="0 0 820 450" preserveAspectRatio="none" aria-hidden="true">
+      <!-- línea horizontal de referencia -->
+      <line x1="220" y1="128" x2="390" y2="128" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 7"/>
+      <!-- línea azul de depresión: termina sobre Mario -->
+      <line x1="220" y1="128" x2="705" y2="330" stroke="#3157d5" stroke-width="6" stroke-linecap="round"/>
+      <!-- pequeño arco del ángulo -->
+      <path d="M275 128 A55 55 0 0 1 270 150" fill="none" stroke="#3157d5" stroke-width="3"/>
+    </svg>
+
+    <div class="angle-label">30° depresión</div>
+    <div class="height-label">altura ?</div>
+    <div class="distance-label">distancia horizontal</div>
+  </div>
+
+</section>
+
+<section id="simulacro" class="card">
+  <h2>📝 Simulacro final</h2>
+  <p class="note">18 preguntas mezcladas. No incluye funciones inversas.</p>
+  <div class="btnrow" style="justify-content:flex-start">
+    <div>Puntaje: <strong id="score">0</strong> / <strong id="total">18</strong></div>
+    <div>Contestadas: <strong id="answered">0</strong> / <strong id="answeredTotal">18</strong></div>
+    <button class="primary" onclick="resetExam()">🎲 Nuevo simulacro</button>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+  <div id="exam"></div>
+  <div id="final" class="feedback"></div>
+</section>
+</main>
+
+<footer>Practicar, revisar el error y volver a intentar. ✨</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const rad=d=>d*Math.PI/180;
+const fmt=n=>Math.round(n*100)/100;
+const close=(a,b,t=.17)=>Math.abs(a-b)<=t;
+let currentTopic='partes';
+
+function topicBank(topic){
+  const banks={
+    partes:[
+      {type:'choice',q:'¿Qué lado está siempre frente al ángulo de 90°?',opts:['Cateto opuesto','Hipotenusa','Cateto adyacente'],ans:1,exp:'La hipotenusa siempre está frente al ángulo de 90°.'},
+      {type:'choice',q:'Respecto al ángulo de referencia, ¿qué cateto está enfrente?',opts:['Cateto opuesto','Cateto adyacente','Hipotenusa'],ans:0,exp:'El cateto opuesto está enfrente del ángulo de referencia.'},
+      {type:'choice',q:'Si cambias el ángulo de referencia, ¿qué puede cambiar?',opts:['Opuesto y adyacente','La hipotenusa deja de existir','El ángulo de 90°'],ans:0,exp:'Opuesto y adyacente dependen del ángulo de referencia.'}
+    ],
+    razones:[
+      {type:'choice',q:'Opuesto + hipotenusa. ¿Qué razón?',opts:['Seno','Coseno','Tangente'],ans:0,exp:'Seno = opuesto ÷ hipotenusa.'},
+      {type:'choice',q:'Adyacente + hipotenusa. ¿Qué razón?',opts:['Tangente','Coseno','Seno'],ans:1,exp:'Coseno = adyacente ÷ hipotenusa.'},
+      {type:'choice',q:'Opuesto + adyacente. ¿Qué razón?',opts:['Tangente','Coseno','Seno'],ans:0,exp:'Tangente = opuesto ÷ adyacente.'},
+      (()=>{let a=rnd(25,55),adj=rnd(8,25),ans=adj*Math.tan(rad(a));return {type:'number',q:`Ángulo ${a}°, adyacente ${adj}. Calcula el opuesto.`,ans,exp:`Opuesto = ${adj} × tangente de ${a}° ≈ ${fmt(ans)}.`}})()
+    ],
+    propiedades:[
+      {type:'choice',q:'¿Cuál es el lado más largo del triángulo rectángulo?',opts:['Hipotenusa','Siempre el opuesto','Siempre el adyacente'],ans:0,exp:'La hipotenusa es el lado más largo.'},
+      {type:'choice',q:'¿Qué igualdad es correcta?',opts:['Tangente = seno ÷ coseno','Seno = tangente ÷ hipotenusa','Coseno = opuesto ÷ adyacente'],ans:0,exp:'Tangente = seno ÷ coseno.'},
+      {type:'choice',q:'Si cambias el ángulo de referencia, ¿qué pasa con opuesto y adyacente?',opts:['Pueden intercambiarse','Nunca cambian','La hipotenusa se vuelve cateto'],ans:0,exp:'Esos nombres dependen del ángulo de referencia.'}
+    ],
+    elevacion:[
+      (()=>{let d=rnd(15,45),a=rnd(25,55),ans=d*Math.tan(rad(a));return {type:'number',q:`SMG4 está a ${d} m de un árbol y mira la copa con un ángulo de elevación de ${a}°. Calcula la altura aproximada.`,ans,exp:`Altura = ${d} × tangente de ${a}° ≈ ${fmt(ans)} m.`}})(),
+      {type:'choice',q:'Mirar desde el suelo hacia la punta de un edificio corresponde a…',opts:['Elevación','Depresión','Ley de Senos'],ans:0,exp:'Mirar hacia arriba = elevación.'}
+    ],
+    depresion:[
+      (()=>{let d=rnd(20,50),a=rnd(25,50),ans=d*Math.tan(rad(a));return {type:'number',q:`Desde un edificio, SMG4 mira a Mario con un ángulo de depresión de ${a}°. La distancia horizontal es ${d} m. Calcula la altura aproximada.`,ans,exp:`Altura = ${d} × tangente de ${a}° ≈ ${fmt(ans)} m.`}})(),
+      {type:'choice',q:'Mirar desde arriba de un edificio hacia un objeto abajo corresponde a…',opts:['Depresión','Elevación','Coseno'],ans:0,exp:'Mirar hacia abajo = depresión.'}
+    ],
+    senos:[
+      (()=>{let A=rnd(30,50),B=rnd(55,75),a=rnd(7,16),ans=a*Math.sin(rad(B))/Math.sin(rad(A));return {type:'number',q:`Ley de Senos: ángulo A=${A}°, ángulo B=${B}°, lado a=${a}. Calcula lado b.`,ans,exp:`b = (${a} × seno de ${B}°) ÷ seno de ${A}° ≈ ${fmt(ans)}.`}})(),
+      {type:'choice',q:'En Ley de Senos, cada lado se empareja con…',opts:['el ángulo que tiene enfrente','el ángulo más cercano','cualquier ángulo'],ans:0,exp:'Cada lado se empareja con su ángulo opuesto.'},
+      {type:'choice',q:'En una fracción, la raya horizontal significa…',opts:['División','Multiplicación','Suma'],ans:0,exp:'La raya horizontal significa división.'}
+    ]
+  };
+  return banks[topic];
+}
+
+function selectTopic(topic){
+  currentTopic=topic;
+  const names={partes:'Ángulo de referencia y lados',razones:'Seno, coseno y tangente',propiedades:'Propiedades básicas',elevacion:'Ángulo de elevación',depresion:'Ángulo de depresión',senos:'Ley de Senos'};
+  $('#topicTitle').textContent=names[topic];
+  newTopicQuestion();
+}
+
+function newTopicQuestion(){
+  const bank=topicBank(currentTopic);
+  const item=bank[Math.floor(Math.random()*bank.length)];
+  const box=$('#topicQuestion'),fb=$('#topicFeedback');
+  fb.className='feedback';fb.innerHTML='';
+  box.innerHTML=`<strong>${item.q}</strong>`;
+  if(item.type==='choice'){
+    item.opts.forEach((o,i)=>{
+      const b=document.createElement('button');b.className='quiz-choice';b.textContent=o;
+      b.onclick=()=>{
+        box.querySelectorAll('button').forEach(x=>x.disabled=true);
+        const ok=i===item.ans;
+        if(ok)b.classList.add('correct');else{b.classList.add('wrong');box.querySelectorAll('button')[item.ans].classList.add('correct')}
+        fb.innerHTML=`<strong>${ok?'¡Bien!':'Respuesta correcta:'}</strong> ${item.exp}`;fb.classList.add('show');
+      };
+      box.appendChild(b);
+    });
+  }else{
+    const row=document.createElement('div');row.className='numeric-row';
+    const inp=document.createElement('input');inp.type='number';inp.step='0.01';inp.placeholder='Escribe tu resultado';
+    const b=document.createElement('button');b.className='primary';b.textContent='Comprobar';
+    b.onclick=()=>{
+      const val=Number(inp.value);if(!Number.isFinite(val)){fb.textContent='Escribe un número primero.';fb.classList.add('show');return}
+      const ok=close(val,item.ans);inp.disabled=true;b.disabled=true;
+      fb.innerHTML=`<strong>${ok?'¡Bien!':'Resultado correcto: '+fmt(item.ans)+'.'}</strong> ${item.exp}`;fb.classList.add('show');
+    };
+    row.append(inp,b);box.appendChild(row);
+  }
+}
+
+function buildExam(){
+  const qs=[];
+  function pick(t){const b=topicBank(t);return b[Math.floor(Math.random()*b.length)]}
+  ['partes','partes','razones','razones','razones','propiedades','propiedades','elevacion','elevacion','depresion','depresion','senos','senos','senos'].forEach(t=>qs.push(pick(t)));
+  // Add four contextualized mixed questions
+  let d=rnd(15,40),a=rnd(25,55),ans=d*Math.tan(rad(a));
+  qs.push({type:'number',q:`Un estudiante está a ${d} m de una torre y observa la parte superior con un ángulo de elevación de ${a}°. Calcula la altura aproximada.`,ans,exp:`Altura = ${d} × tangente de ${a}° ≈ ${fmt(ans)} m.`});
+  qs.push({type:'choice',q:'En un problema escrito, ¿qué conviene hacer primero?',opts:['Dibujar la situación y marcar los datos','Elegir una fórmula al azar','Multiplicar todos los números'],ans:0,exp:'Primero dibuja y organiza los datos.'});
+  qs.push({type:'choice',q:'Si aparecen cateto opuesto y cateto adyacente, corresponde…',opts:['Tangente','Seno','Coseno'],ans:0,exp:'Tangente = opuesto ÷ adyacente.'});
+  qs.push({type:'choice',q:'En Ley de Senos, 10 ÷ seno de 30° = b ÷ seno de 50°. Al multiplicar cruzado queda…',opts:['10 × seno de 50° = b × seno de 30°','10 × seno de 30° = b × seno de 50°','10 + seno de 50° = b + seno de 30°'],ans:0,exp:'La multiplicación cruzada va en diagonal.'});
+  return qs.slice(0,18);
+}
+
+let exam=[],score=0,answered=new Set();
+function renderExam(){
+  const box=$('#exam');box.innerHTML='';
+  exam.forEach((item,i)=>{
+    const d=document.createElement('div');d.className='card';d.style.boxShadow='none';d.style.margin='12px 0';
+    d.innerHTML=`<strong>${i+1}. ${item.q}</strong>`;
+    const fb=document.createElement('div');fb.className='feedback';
+    if(item.type==='choice'){
+      item.opts.forEach((o,j)=>{
+        const b=document.createElement('button');b.className='quiz-choice';b.textContent=o;
+        b.onclick=()=>{
+          if(answered.has(i))return;answered.add(i);const ok=j===item.ans;if(ok)score++;
+          if(ok)b.classList.add('correct');else{b.classList.add('wrong');d.querySelectorAll('.quiz-choice')[item.ans].classList.add('correct')}
+          d.querySelectorAll('.quiz-choice').forEach(x=>x.disabled=true);
+          fb.innerHTML=`<strong>${ok?'¡Bien!':'Respuesta correcta:'}</strong> ${item.exp}`;fb.classList.add('show');updateScore();
+        };d.appendChild(b);
+      });
+    }else{
+      const row=document.createElement('div');row.className='numeric-row';
+      const inp=document.createElement('input');inp.type='number';inp.step='0.01';inp.placeholder='Escribe tu resultado';
+      const b=document.createElement('button');b.className='primary';b.textContent='Comprobar';
+      b.onclick=()=>{
+        if(answered.has(i))return;const v=Number(inp.value);if(!Number.isFinite(v)){fb.textContent='Escribe un número primero.';fb.classList.add('show');return}
+        answered.add(i);const ok=close(v,item.ans);if(ok)score++;inp.disabled=true;b.disabled=true;
+        fb.innerHTML=`<strong>${ok?'¡Bien!':'Resultado correcto: '+fmt(item.ans)+'.'}</strong> ${item.exp}`;fb.classList.add('show');updateScore();
+      };
+      row.append(inp,b);d.appendChild(row);
+    }
+    d.appendChild(fb);box.appendChild(d);
+  });
+}
+function updateScore(){
+  $('#score').textContent=score;$('#answered').textContent=answered.size;$('#bar').style.width=(answered.size/exam.length*100)+'%';
+  if(answered.size===exam.length){
+    const p=Math.round(score/exam.length*100);const f=$('#final');f.classList.add('show');
+    f.innerHTML=`<strong>${score}/${exam.length} — ${p}%</strong><br>${p>=80?'Muy buen resultado. Revisa los pocos errores.':'Revisa las explicaciones y repite el simulacro.'}`;
+  }
+}
+function resetExam(){
+  exam=buildExam();score=0;answered=new Set();$('#score').textContent='0';$('#answered').textContent='0';$('#total').textContent=exam.length;$('#answeredTotal').textContent=exam.length;$('#bar').style.width='0%';$('#final').className='feedback';$('#final').innerHTML='';renderExam();
+}
+selectTopic('partes');resetExam();
+
+function toggleCrazy(el){
+  el.classList.toggle('crazy');
+}
+function connectLine(lineId, fromId, toId){
+  const line=document.getElementById(lineId), from=document.getElementById(fromId), to=document.getElementById(toId);
+  if(!line || !from || !to) return;
+  const scene=line.parentElement;
+  const sr=scene.getBoundingClientRect(), fr=from.getBoundingClientRect(), tr=to.getBoundingClientRect();
+  const x1=fr.left-sr.left + fr.width*0.78;
+  const y1=fr.top-sr.top + fr.height*0.54;
+  const x2=tr.left-sr.left + tr.width*0.50;
+  const y2=tr.top-sr.top + tr.height*0.58;
+  const dx=x2-x1, dy=y2-y1;
+  line.style.left=x1+'px';
+  line.style.top=y1+'px';
+  line.style.width=Math.hypot(dx,dy)+'px';
+  line.style.transform='rotate('+Math.atan2(dy,dx)+'rad)';
+}
+function updateFunLines(){
+  connectLine('practiceElevLine','practiceSmgElev','practiceTreeTarget');
+  connectLine('practiceDepLine','practiceSmgDep','practiceMarioDep');
+}
+window.addEventListener('load', updateFunLines);
+window.addEventListener('resize', updateFunLines);
+</script>
+
+<script>
+(function(){
+  function addCrazy(id){
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('click',()=>el.classList.toggle('crazy'));
+  }
+  addCrazy('fixedSmgDep');
+  addCrazy('fixedMarioDep');
+})();
+</script>
+
+
+<script>
+(function(){
+  const smg=document.getElementById('fixedSmgElev');
+  if(smg){smg.addEventListener('click',()=>smg.classList.toggle('crazy'));}
+})();
+</script>
+
+
+<script>
+(function(){
+  const smg=document.getElementById('fixedSmgElev');
+  const mario=document.getElementById('fixedMarioTree');
+  if(smg){smg.addEventListener('click',()=>smg.classList.toggle('crazy'));}
+  if(mario){mario.addEventListener('click',()=>mario.classList.toggle('crazy'));}
+})();
+</script>
+
+</body>
+</html>
